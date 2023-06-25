@@ -1,0 +1,32 @@
+.card {
+    position: relative;
+    white-space: pre-wrap;
+    border-radius: 3px;
+    display: inline-block;
+    padding: 0.5rem;
+    overflow: hidden;
+    z-index: 0;
+    margin: 0.5rem;
+}
+
+.card-header {
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: var(--card-text);
+    margin: 0.25rem;
+    z-index: 1;
+}
+
+.card-body {
+    font-size: 1.2rem;
+    margin: 0.25rem;
+    color: var(--card-text);
+    z-index: 1;
+}
+
+.card-bg-text {
+    font-size: 18rem;
+    font-weight: 600;
+    position: absolute;
+    z-index: -1;
+}

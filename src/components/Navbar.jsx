@@ -12,8 +12,7 @@ export default function Navbar() {
 		<div className="navbar">
 			<div className="navbar-header">
 				jumpsca.re <Icon tabIndex="0" style={{color: theme === "dark" ? "var(--coral-d)" : "var(--yellow)"}} className="text-aligned-icon" icon={theme === "dark" ? "ic:twotone-dark-mode" : "ic:twotone-light-mode"} onClick={() => {
-					// TODO: Right click plays a little animation that throws the icon in a garbage can
-					// And sets theme to undefined (for system theme)
+					// TODO: Right click plays a little animation that throws the icon in a garbage can and sets theme to undefined (for system theme)
 					if (theme === "dark") {
 						setTheme("light");
 					} else {

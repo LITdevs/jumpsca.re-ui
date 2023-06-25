@@ -48,6 +48,7 @@ body {
 
 .background-text {
     color: var(--background-text);
+    font-weight: normal;
 }
 
 .background-text a {

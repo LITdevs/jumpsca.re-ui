@@ -21,6 +21,7 @@
 
 .navbar-item a {
     color: var(--nav-link);
+    text-decoration: none;
 }
 
 .navbar-item a:visited {

@@ -6,7 +6,7 @@ import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import Root from "./routes/Root";
 import ErrorPage from "./components/ErrorPage";
 import NotFoundPage from "./components/NotFoundPage";
-import Homepage from "./Homepage";
+import Homepage from "./routes/Homepage";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
