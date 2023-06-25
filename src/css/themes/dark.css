@@ -1,0 +1,8 @@
+/* Colors for dark mode */
+:root {
+    --background: var(--dark);
+    --nav-background: var(--dark-d);
+    --background-text: var(--pink);
+    --card-text: var(--purple-d);
+    --nav-header-text: var(--white);
+}

@@ -1,0 +1,8 @@
+/* Colors for light mode */
+:root {
+    --background: var(--white);
+    --nav-background: var(--purple);
+    --background-text: var(--coral);
+    --card-text: var(--purple-d);
+    --nav-header-text: var(--white);
+}

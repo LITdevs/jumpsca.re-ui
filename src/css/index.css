@@ -1,0 +1,56 @@
+/* Define fonts! */
+@font-face {
+  font-family: 'Belanosima';
+  src: url('../assets/Belanosima-Bold.woff2') format('woff2');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Belanosima';
+  src: url('../assets/Belanosima-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Belanosima';
+  src: url('../assets/Belanosima-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+}
+
+/* Define color palette */
+:root {
+  --white: #f5f5f5;
+  --white-d: #ececec;
+  --pink: #ffc6d9;
+  --pink-d: #ffa8c5;
+  --coral: #fe938c;
+  --coral-d: #fe7970;
+  --blue: #51c4e1;
+  --blue-d: #08b5e1;
+  --yellow: #fff7ae;
+  --yellow-d: #e5dd6e;
+  --dark: #2d3047;
+  --dark-d: #202232;
+  --purple: #4b284d;
+  --purple-d: #271528;
+}
+
+body {
+  margin: 0;
+  background-color: var(--background);
+  font-family: 'Belanosima', sans-serif;
+  font-weight: normal;
+  font-style: normal;
+}
+
+.background-text {
+    color: var(--background-text);
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
