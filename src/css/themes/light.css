@@ -5,4 +5,12 @@
     --background-text: var(--coral);
     --card-text: var(--purple-d);
     --nav-header-text: var(--white);
+    --nav-text: var(--yellow);
+    --nav-link: var(--coral);
+    --nav-link-visited: var(--coral);
+    --nav-link-hover: var(--coral-d);
+    --background-link: var(--blue);
+    --background-link-visited: var(--blue);
+    --background-link-hover: var(--blue-d);
+    --scrollbar-color: var(--purple-d);
 }

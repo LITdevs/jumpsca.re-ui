@@ -1,0 +1,27 @@
+.root-container {
+    /*
+    Main container, contains root-right and root-content
+     */
+    display: flex;
+    height: 100vh; /* Set the container to full height */
+
+}
+
+.root-right {
+    /*
+    Navbar on the right side, vertical
+     */
+    overflow-y: auto; /* Enable vertical scrolling for the navbar */
+    flex-shrink: 0; /* Prevent the navbar from shrinking */
+
+}
+
+.root-content {
+    /*
+    Content container, fills the rest of the space on the left
+    Contains <Outlet>
+     */
+    flex-grow: 1;
+    overflow-y: auto;
+
+}

@@ -50,7 +50,41 @@ body {
     color: var(--background-text);
 }
 
+.background-text a {
+    color: var(--background-link);
+}
+
+.background-text a:visited {
+  color: var(--background-link-visited);
+}
+
+.background-text a:hover {
+  color: var(--background-link-hover);
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+::-webkit-scrollbar {
+  width: 0.33rem;               /* width of the entire scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: transparent        /* color of the tracking area */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-color);    /* color of the scroll thumb */
+  border-radius: 20px;       /* roundness of the scroll thumb */
+}
+
+:root {
+  scrollbar-width: thin;          /* "auto" or "thin" */
+  scrollbar-color: var(--scrollbar-color) transparent;   /* scroll thumb and track */
+}
+
+.text-aligned-icon {
+    vertical-align: text-bottom;
 }

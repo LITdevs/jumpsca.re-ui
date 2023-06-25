@@ -1,8 +1,12 @@
-import React, {lazy, Suspense} from 'react';
+import React, {lazy, Suspense, useEffect} from 'react';
 import ReactDOM from 'react-dom/client';
 import './css/index.css';
-import App from './App';
 import ThemeContext from "./context/ThemeContext";
+import {createBrowserRouter, RouterProvider} from "react-router-dom";
+import Root from "./routes/Root";
+import ErrorPage from "./components/ErrorPage";
+import NotFoundPage from "./components/NotFoundPage";
+import Homepage from "./Homepage";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -22,6 +26,14 @@ function ThemedApp(props) {
     const savedTheme = localStorage.getItem("theme") || (prefersDarkMode ? "dark" : "light")
     const [theme, setTheme] = React.useState(savedTheme);
 
+    useEffect(() => {
+        if (theme) {
+            localStorage.setItem("theme", theme);
+        } else {
+            localStorage.removeItem("theme");
+        }
+    }, [theme])
+
     return (
         <ThemeContext.Provider value={{
             theme, setTheme
@@ -35,10 +47,34 @@ function ThemedApp(props) {
     );
 }
 
+/**
+ * This is the router.
+ * It routes.
+ * Shocking.
+ * @type {Router}
+ */
+const router = createBrowserRouter([
+    {
+        path: "/",
+        element: <Root />,
+        errorElement: <ErrorPage />,
+        children: [
+            {
+                path: "/",
+                element: <Homepage />
+            },
+            {
+                path: "*",
+                element: <NotFoundPage />
+            }
+        ]
+    }
+])
+
 root.render(
   <React.StrictMode>
       <ThemedApp>
-          <App />
+          <RouterProvider router={router} />
       </ThemedApp>
   </React.StrictMode>
 );
