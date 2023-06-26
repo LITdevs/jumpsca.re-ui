@@ -1,0 +1,23 @@
+.home-header {
+    font-size: 3.5rem;
+    text-align: center;
+    font-weight: 600;
+    color: var(--background-text);
+    margin: 2rem;
+}
+
+.card-container {
+    margin: 2rem;
+}
+
+.address-input {
+    width: 75%;
+    margin: 0.5rem;
+    padding: 0.75rem;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    text-align: center;
+    font-family: "Belanosima", sans-serif;
+    font-size: 1.25rem;
+}

@@ -1,0 +1,16 @@
+/* Colors for dark mode */
+:root {
+    --background: var(--dark);
+    --nav-background: var(--dark-d);
+    --background-text: var(--pink);
+    --card-text: var(--purple-d);
+    --nav-header-text: var(--white);
+    --nav-text: var(--coral);
+    --nav-link: var(--yellow);
+    --nav-link-visited: var(--yellow);
+    --nav-link-hover: var(--yellow-d);
+    --background-link: var(--blue);
+    --background-link-visited: var(--blue);
+    --background-link-hover: var(--blue-d);
+    --scrollbar-color: var(--purple-d);
+}

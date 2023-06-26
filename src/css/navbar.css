@@ -1,0 +1,33 @@
+.navbar {
+    background-color: var(--nav-background);
+    width: 20rem;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    right: 0;
+}
+
+.navbar-header {
+    color: var(--nav-header-text);
+    font-weight: 600;
+    font-size: 2.25rem;
+    padding: 0.5rem;
+    text-align: center;
+}
+
+.navbar-item {
+    color: var(--nav-text);
+}
+
+.navbar-item a {
+    color: var(--nav-link);
+    text-decoration: none;
+}
+
+.navbar-item a:visited {
+    color: var(--nav-link-visited);
+}
+
+.navbar-item a:hover {
+    color: var(--nav-link-hover);
+}
