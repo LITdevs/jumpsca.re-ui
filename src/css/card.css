@@ -1,12 +1,18 @@
 .card {
+    /* Removing this position: relative has a pretty funny effect on the home page
+     TODO: turn into easter egg (needs funny animation) */
     position: relative;
     white-space: pre-wrap;
     border-radius: 3px;
     display: inline-block;
+    align-self: center;
     padding: 0.5rem;
     overflow: hidden;
     z-index: 0;
     margin: 0.5rem;
+    max-width: 85vw;
+    min-height: max-content;
+    text-align: unset;
 }
 
 .card-header {
@@ -29,4 +35,5 @@
     font-weight: 600;
     position: absolute;
     z-index: -1;
+    user-select: none;
 }

@@ -13,4 +13,5 @@
     --background-link-visited: var(--blue);
     --background-link-hover: var(--blue-d);
     --scrollbar-color: var(--purple-d);
+    --nav-menu-button: var(--blue-d);
 }
