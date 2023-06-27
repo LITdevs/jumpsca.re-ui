@@ -32,32 +32,40 @@ export default function Root() {
 
 	return (
 		<div className="root-container">
-			{
-				// Display big = navbar open button
-				windowSize.width <= magicNumber && <Icon style={{
-					color: "var(--nav-menu-button)",
-					position: "absolute",
-					top: "0.5rem",
-					right: "0.5rem",
-					fontSize: "2rem",
-					zIndex: "1000"
-				}} icon="ic:baseline-menu" onClick={() => {
-					setNavOpen(p => !p);
-				}} />
-			}
-			<div className="root-content">
-				{ !navOpen && <Outlet/> }
+			<div className="announcement-banner">
+				<span className="announcement-banner-text">
+				<Icon icon="fluent-emoji-high-contrast:construction" style={{fontSize: "1.5rem"}} className="text-aligned-icon"></Icon>
+					&nbsp;This site is still under construction. Please excuse the mess!&nbsp;
+				<Icon icon="fluent-emoji-high-contrast:construction" style={{fontSize: "1.5rem"}} className="text-aligned-icon"></Icon></span>
 			</div>
-			<div className="root-right" onClick={(e) => {
-				if (e.target.nodeName === "A" && navOpen) setNavOpen(false);
-			}}>
+			<div className="root-content-container">
 				{
-					// Display smol = no big fat navbar
-					// 800 is a totally arbitrary number, but it seems pretty ok
-					// hello this is me from a couple hours later, it is no longer arbitrary
-					// it is now 862. that is all.
-					(windowSize.width > magicNumber|| navOpen) && <Navbar />
+					// Display big = navbar open button
+					windowSize.width <= magicNumber && <Icon style={{
+						color: "var(--nav-menu-button)",
+						position: "absolute",
+						top: "0.5rem",
+						right: "0.5rem",
+						fontSize: "2rem",
+						zIndex: "1000"
+					}} icon="ic:baseline-menu" onClick={() => {
+						setNavOpen(p => !p);
+					}} />
 				}
+				<div className="root-content">
+					{ !navOpen && <Outlet/> }
+				</div>
+				<div className="root-right" onClick={(e) => {
+					if (e.target.nodeName === "A" && navOpen) setNavOpen(false);
+				}}>
+					{
+						// Display smol = no big fat navbar
+						// 800 is a totally arbitrary number, but it seems pretty ok
+						// hello this is me from a couple hours later, it is no longer arbitrary
+						// it is now 862. that is all.
+						(windowSize.width > magicNumber|| navOpen) && <Navbar />
+					}
+				</div>
 			</div>
 		</div>
 	);
