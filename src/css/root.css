@@ -37,9 +37,14 @@
     Banner at the top of the page,
     above both the navbar and the content
      */
-    color: var(--banner-text-color);
-    font-size: 1.2rem;
     padding: 0.5rem;
     text-align: center;
     background: var(--banner-color-primary) repeating-linear-gradient(45deg, var(--banner-color-secondary), var(--banner-color-secondary) 12px, var(--banner-color-primary) 5px, var(--banner-color-primary) 25px);
+}
+
+.announcement-banner-text {
+    color: var(--banner-text-color);
+    font-size: 1.2rem;
+    font-weight: 600;
+
 }

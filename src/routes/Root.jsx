@@ -33,10 +33,7 @@ export default function Root() {
 	return (
 		<div className="root-container">
 			<div className="announcement-banner">
-				<span className="announcement-banner-text">
-				<Icon icon="fluent-emoji-high-contrast:construction" style={{fontSize: "1.5rem"}} className="text-aligned-icon"></Icon>
-					&nbsp;This site is still under construction. Please excuse the mess!&nbsp;
-				<Icon icon="fluent-emoji-high-contrast:construction" style={{fontSize: "1.5rem"}} className="text-aligned-icon"></Icon></span>
+				<span className="announcement-banner-text">This site is still under construction. (╯°□°）╯︵ ┻━┻</span>
 			</div>
 			<div className="root-content-container">
 				{
