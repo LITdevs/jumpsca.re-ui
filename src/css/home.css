@@ -22,3 +22,13 @@
     font-family: "Belanosima", sans-serif;
     font-size: 1.25rem;
 }
+
+.card-link {
+    color: var(--card-link-color);
+}
+.card-link:visited {
+    color: var(--card-link-color-visited);
+}
+.card-link:hover {
+    color: var(--card-link-color-hover);
+}

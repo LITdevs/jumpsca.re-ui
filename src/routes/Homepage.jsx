@@ -5,6 +5,7 @@ import Masonry, {ResponsiveMasonry} from "react-responsive-masonry";
 import {Icon} from "@iconify-icon/react";
 import {useState} from "react";
 import api from "../util/API";
+import {Link} from "react-router-dom";
 
 function Homepage() {
     const [availability, setAvailability] = useState(undefined);
@@ -131,9 +132,9 @@ function Homepage() {
                     {availability &&
                     (availability.checking
                         ? <span style={{fontSize: "1.2rem"}}>Checking...</span>
-                        : <span style={{fontSize: "1.2rem"}}>
-                            <Icon className="text-aligned-icon" icon={availability.available ? "fluent:presence-available-24-regular" : "fluent:presence-blocked-24-regular"} />
-                            {availability.availabilityText}
+                        : <span style={{fontSize: "1.2rem", color: availability.available ? "var(--homepage-available)" : "var(--homepage-not-available)"}}>
+                            <Icon className="text-aligned-icon" style={{marginRight: "0.2rem"}} icon={availability.available ? "fluent:presence-available-24-regular" : "fluent:presence-blocked-24-regular"} />
+                            {availability.availabilityText} {availability.punycode && <Link className="card-link" to="https://help.jumpsca.re/punycode">Learn why</Link>}
                         </span>)
                     }
                     <div className="card-bg-text" style={{color: `var(--blue-d)`, top: 0, left: 0, fontSize: "12rem"}}>

@@ -17,4 +17,9 @@
     --banner-color-primary: var(--yellow);
     --banner-color-secondary: var(--yellow-d);
     --banner-text-color: var(--dark-d);
+    --card-link-color: var(--purple);
+    --card-link-color-visited: var(--purple);
+    --card-link-color-hover: var(--purple-d);
+    --homepage-available: #008627;
+    --homepage-not-available: #a60000;
 }
