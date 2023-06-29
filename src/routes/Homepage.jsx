@@ -3,10 +3,14 @@ import "../css/home.css";
 import "../css/card.css";
 import Masonry, {ResponsiveMasonry} from "react-responsive-masonry";
 import {Icon} from "@iconify-icon/react";
+import {useState} from "react";
+import api from "../util/API";
 
 function Homepage() {
+    const [availability, setAvailability] = useState(undefined);
+    const [checkTimeout, setCheckTimeout] = useState(undefined);
 
-  return (
+    return (
         <div className="card-container">
             <h1 className="background-text home-header">jumpsca.re your friends today</h1>
             <ResponsiveMasonry
@@ -42,10 +46,10 @@ function Homepage() {
                           bg-text-right="1rem"/>
 
                     <Card title="You kept reading! That's good right?"
-                          body="Or maybe this is the first information card you read?\nIn any case, for just 1 €/year you can get access to these services, and your very own address under the jumpsca.re domain.\n🦀1 €🦀"
+                          body="Or maybe this is the first information card you read?\nIn any case, for just 2 €/year you can get access to these services, and your very own address under the jumpsca.re domain.\n🦀2 €🦀"
                           color="coral"
                           width="28rem"
-                          bg-text="1€"
+                          bg-text="2€"
                           bg-text-bottom="-3.5rem"
                           bg-text-right="1rem"
                           bg-text-size="16rem"/>
@@ -80,9 +84,58 @@ function Homepage() {
                         Find out if yours is up for grabs
                     </div>
                     <div className="card-body">
-                        <input type="text" className="address-input"></input><span>.jumpsca.re</span>
+                        <input type="text" className="address-input" onInput={(e) => {
+                            let val = e.target.value?.replace(/[./]/gm, "")
+                            if (val !== e.target.value) e.target.value = val;
+                            clearTimeout(checkTimeout);
+                            if (!val || val?.trim()?.length === 0) return setAvailability(undefined);
+                            setAvailability({checking: true})
+                            setCheckTimeout(setTimeout(async () => {
+                                let res = await api.getAddress(val);
+                                let available = res.response.available;
+                                let reserved = !!res.response?.reserved;
+                                let invalid = !!res.response?.invalid;
+                                let name = res.response.name;
+
+                                let statusCode = res.statusCode;
+
+                                let availabilityText;
+
+                                if (!available) {
+                                    availabilityText = `${name} is already taken!`;
+                                    if (reserved) {
+                                        availabilityText = `${name} is a system reserved address!`;
+                                    }
+                                    if (invalid) {
+                                        availabilityText = `${name || val} is not a valid address!`;
+                                    }
+                                } else {
+                                    availabilityText = `${name} is available!`;
+                                    if (name !== val) {
+                                        availabilityText = `${val} is available, but will be rendered as ${name}.`;
+                                    }
+                                }
+
+                                setAvailability({
+                                    available,
+                                    reserved,
+                                    name,
+                                    statusCode,
+                                    availabilityText,
+                                    punycode: name !== val
+                                });
+                            }, 500));
+                        }}></input><span>.jumpsca.re</span>
                     </div>
-                    <span style={{fontSize: "1.2rem"}}>Your address could be your name, online username or something totally different!</span>
+                    <span style={{fontSize: "1.2rem"}}>Your address could be your name, online username or something totally different!</span><br />
+                    {availability &&
+                    (availability.checking
+                        ? <span style={{fontSize: "1.2rem"}}>Checking...</span>
+                        : <span style={{fontSize: "1.2rem"}}>
+                            <Icon className="text-aligned-icon" icon={availability.available ? "fluent:presence-available-24-regular" : "fluent:presence-blocked-24-regular"} />
+                            {availability.availabilityText}
+                        </span>)
+                    }
                     <div className="card-bg-text" style={{color: `var(--blue-d)`, top: 0, left: 0, fontSize: "12rem"}}>
                         <Icon icon="foundation:magnifying-glass" color="#fff7ae" />
                     </div>
