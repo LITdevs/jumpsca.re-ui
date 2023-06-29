@@ -14,4 +14,7 @@
     --background-link-hover: var(--blue-d);
     --scrollbar-color: var(--purple-d);
     --nav-menu-button: var(--blue-d);
+    --banner-color-primary: var(--coral);
+    --banner-color-secondary: var(--coral-d);
+    --banner-text-color: var(--dark-d);
 }
