@@ -20,6 +20,10 @@
     --card-link-color: var(--purple);
     --card-link-color-visited: var(--purple);
     --card-link-color-hover: var(--purple-d);
-    --homepage-available: #008627;
+    --homepage-available: var(--green-d);
     --homepage-not-available: #a60000;
+    --checkout-background: var(--coral-d);
+    --checkout-text: var(--dark-d);
+    --checkout-cancel-color: var(--dark-d);
+    --checkout-success-color: var(--green-d);
 }

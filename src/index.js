@@ -7,6 +7,8 @@ import Root from "./routes/Root";
 import ErrorPage from "./components/ErrorPage";
 import NotFoundPage from "./components/NotFoundPage";
 import Homepage from "./routes/Homepage";
+import OrderCancel from "./routes/OrderCancel";
+import OrderSuccess from "./routes/OrderSuccess";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -62,6 +64,22 @@ const router = createBrowserRouter([
             {
                 path: "/",
                 element: <Homepage />
+            },
+            {
+                path: "/checkout/cancel",
+                element: <OrderCancel type="new" />
+            },
+            {
+                path: "/renewal/cancel",
+                element: <OrderCancel type="renewal" />
+            },
+            {
+                path: "/checkout/success",
+                element: <OrderSuccess type="new" />
+            },
+            {
+                path: "/renewal/success",
+                element: <OrderSuccess type="renewal" />
             },
             {
                 path: "*",

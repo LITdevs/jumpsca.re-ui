@@ -28,6 +28,22 @@ class API {
 	}
 
 	/**
+	 *
+	 */
+	async getCheckoutSession(sessionId) {
+		try {
+
+			return await this.call(`/address/checkout/session?session=${sessionId}`);
+		} catch (data) {
+			return data
+		}
+	}
+
+	async registerAddress(address) {
+		return await this.call(`/address/checkout/${address}`, "POST")
+	}
+
+	/**
 	 * Call API
 	 * @param path
 	 * @param method

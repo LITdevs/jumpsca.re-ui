@@ -80,7 +80,7 @@ function Homepage() {
 
             <div style={{textAlign: "center", marginBottom: "1rem"}}>
                 <div className="card" style={{backgroundColor: "var(--blue)",
-                    width: "59.75rem", maxWidth: "max(calc(100% - 2.8rem))", height: "10rem", textAlign: "center"}}>
+                    width: "59.75rem", maxWidth: "max(calc(100% - 2.8rem))", height: "max-content", textAlign: "center"}}>
                     <div className="card-header" style={{fontSize: "2rem"}}>
                         Find out if yours is up for grabs
                     </div>
@@ -121,6 +121,7 @@ function Homepage() {
                                     available,
                                     reserved,
                                     name,
+                                    val,
                                     statusCode,
                                     availabilityText,
                                     punycode: name !== val
@@ -132,10 +133,13 @@ function Homepage() {
                     {availability &&
                     (availability.checking
                         ? <span style={{fontSize: "1.2rem"}}>Checking...</span>
-                        : <span style={{fontSize: "1.2rem", color: availability.available ? "var(--homepage-available)" : "var(--homepage-not-available)"}}>
+                        : <><span style={{fontSize: "1.2rem", color: availability.available ? "var(--homepage-available)" : "var(--homepage-not-available)"}}>
                             <Icon className="text-aligned-icon" style={{marginRight: "0.2rem"}} icon={availability.available ? "fluent:presence-available-24-regular" : "fluent:presence-blocked-24-regular"} />
                             {availability.availabilityText} {availability.punycode && <Link className="card-link" to="https://help.jumpsca.re/punycode">Learn why</Link>}
-                        </span>)
+
+                        </span>{availability.available && <>
+                        <br /><Link to={`/register?address=${availability.val}`}><button className="button register-button">Register</button></Link>
+                        </>}</>)
                     }
                     <div className="card-bg-text" style={{color: `var(--blue-d)`, top: 0, left: 0, fontSize: "12rem"}}>
                         <Icon icon="foundation:magnifying-glass" color="#fff7ae" />
