@@ -67,13 +67,26 @@ Super crappy buttons :/
     border-color: var(--pink-d);
 }
 
+.button:disabled {
+    cursor: not-allowed;
+}
+
 .button:hover {
     background-color: var(--pink);
     border-color: var(--pink);
-    border-bottom-width: 3px;
-    border-right-width: 3px;
+}
+
+.button:hover:disabled {
+    background-color: var(--pink-d);
+    border-color: var(--pink-d);
+
 }
 
 .button:active {
     filter: drop-shadow(0.1rem 0.1rem 0.05rem var(--dark-d));
+}
+
+
+.button:active:disabled {
+    filter: drop-shadow(0.2rem 0.15rem 0.05rem var(--dark-d));
 }

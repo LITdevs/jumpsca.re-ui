@@ -9,6 +9,7 @@ import NotFoundPage from "./components/NotFoundPage";
 import Homepage from "./routes/Homepage";
 import OrderCancel from "./routes/OrderCancel";
 import OrderSuccess from "./routes/OrderSuccess";
+import Register from "./routes/Register";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -80,6 +81,10 @@ const router = createBrowserRouter([
             {
                 path: "/renewal/success",
                 element: <OrderSuccess type="renewal" />
+            },
+            {
+                path: "/register",
+                element: <Register />
             },
             {
                 path: "*",

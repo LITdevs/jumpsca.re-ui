@@ -39,8 +39,8 @@ class API {
 		}
 	}
 
-	async registerAddress(address) {
-		return await this.call(`/address/checkout/${address}`, "POST")
+	async registerAddress(address, email, years = 1) {
+		return await this.call(`/address/checkout/${address}`, "POST", { email, years })
 	}
 
 	/**
