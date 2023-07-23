@@ -103,7 +103,7 @@ function RegisterCard(props) {
 		}} />
 		<small style={{cursor: "pointer"}} onClick={() => {
 			setCoupon(prompt("Enter your coupon"))
-		}}>Have a coupon code? Click here to enter it</small>
+		}}>Have a gift code? Click here to enter it</small>
 		<br />
 		<button id="registerButton" className="button" disabled={!emailValid} onClick={() => beginCheckout()}>Proceed to checkout</button>
 	</>)
