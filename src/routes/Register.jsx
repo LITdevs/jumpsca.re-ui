@@ -47,6 +47,7 @@ function RegisterCard(props) {
 	let address = props.address;
 	let displayProblem = props.displayProblem;
 	const [email, setEmail] = useState();
+	const [coupon, setCoupon] = useState();
 	const [emailValid, setEmailValid] = useState(false);
 	const [years, setYears] = useState(1);
 	let emailRegex = /^[^@]+@[^@]+\.[^@]+$/
@@ -65,7 +66,7 @@ function RegisterCard(props) {
 		let emailAddress = email
 		console.log(`Checkout: ${address} ${emailAddress} ${years}y`)
 		try {
-			let res = await api.registerAddress(address, emailAddress, years);
+			let res = await api.registerAddress(address, emailAddress, years, coupon);
 			if (!res.request.success) return displayProblem(res.response.message || "Internal Server Error");
 			window.location = res.response.redirect;
 		} catch (e) {
@@ -100,6 +101,9 @@ function RegisterCard(props) {
 		<input id="emailInput" className="email-input" type="email" onChange={(e) => {
 			setEmail(e.target.value)
 		}} />
+		<small style={{cursor: "pointer"}} onClick={() => {
+			setCoupon(prompt("Enter your coupon"))
+		}}>Have a coupon code? Click here to enter it</small>
 		<br />
 		<button id="registerButton" className="button" disabled={!emailValid} onClick={() => beginCheckout()}>Proceed to checkout</button>
 	</>)

@@ -10,7 +10,8 @@ export default function OrderSuccess (props) {
 	const [order, setOrder] = useState();
 	const [searchParams] = useSearchParams();
 	let sessionId = searchParams.get("session");
-
+	let coupon = searchParams.get("coupon");
+	let address = searchParams.get("address");
 
 	function displayProblem (problemDescription) {
 		setOrder(<>
@@ -25,12 +26,31 @@ export default function OrderSuccess (props) {
 
 	useEffect(() => {
 		(async () => {
-			if (!sessionId) return displayProblem("Session ID was not found.")
-			let orderData = await api.getCheckoutSession(sessionId)
+			if (!sessionId && !coupon) return displayProblem("Session ID was not found.")
+			let orderData
+			let session
+			if (coupon) {
+				if (!address) return displayProblem("Coupon used, but address not specified")
+				session = {
+					lineItems: [
+						{
+							address,
+							quantity: 1,
+							total: 200
+						}
+					],
+					total: 0,
+					tax: 0,
+					subtotal: 0,
+					discount: 200
+				}
+			} else {
+				orderData = await api.getCheckoutSession(sessionId)
 
-			if (!orderData.request.success) return displayProblem(orderData.response.message);
+				if (!orderData.request.success) return displayProblem(orderData.response.message);
 
-			let session = orderData.response.session;
+				session = orderData.response.session;
+			}
 			// noinspection JSCheckFunctionSignatures
 			setOrder(
 				<>

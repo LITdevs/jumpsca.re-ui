@@ -66,8 +66,8 @@ class API {
 		}
 	}
 
-	async registerAddress(address, email, years = 1) {
-		return await this.call(`/address/checkout/${address}`, "POST", { email, years })
+	async registerAddress(address, email, years = 1, coupon = undefined) {
+		return await this.call(`/address/checkout/${address}`, "POST", { email, years, coupon })
 	}
 
 	async renewAddress(address, years = 1) {
