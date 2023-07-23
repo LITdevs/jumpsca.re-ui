@@ -17,4 +17,18 @@
     --banner-color-primary: var(--yellow);
     --banner-color-secondary: var(--yellow-d);
     --banner-text-color: var(--dark-d);
+    --card-link-color: var(--purple);
+    --card-link-color-visited: var(--purple);
+    --card-link-color-hover: var(--purple-d);
+    --homepage-available: var(--green-d);
+    --homepage-not-available: #a60000;
+    --checkout-background: var(--yellow);
+    --checkout-text: var(--dark-d);
+    --checkout-cancel-color: var(--coral-d);
+    --checkout-success-color: var(--green);
+    --dashboard-card-color: var(--coral);
+    --dashboard-card-color-alt: var(--blue);
+    --dashboard-text: var(--pink);
+    --account-dashboard-color: var(--yellow);
+    --address-dashboard-color: var(--pink);
 }

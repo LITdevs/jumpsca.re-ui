@@ -15,7 +15,21 @@
     text-align: center;
 }
 
+.navbar-item-link-text {
+    margin: 0 0.5rem;
+}
+
 .navbar-item {
+    color: var(--nav-text);
+    font-size: 1.33rem;
+    margin: 0.25rem 3.25rem;
+}
+
+.navbar-item-logout .navbar-item-link-text {
+    color: var(--nav-text);
+}
+
+.navbar-item-logout .text-aligned-icon {
     color: var(--nav-text);
 }
 

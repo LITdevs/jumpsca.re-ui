@@ -5,6 +5,7 @@ import Masonry, {ResponsiveMasonry} from "react-responsive-masonry";
 import {Icon} from "@iconify-icon/react";
 import {useState} from "react";
 import api from "../util/API";
+import {Link} from "react-router-dom";
 
 function Homepage() {
     const [availability, setAvailability] = useState(undefined);
@@ -37,10 +38,10 @@ function Homepage() {
 
 
                     <Card title="Host your website on jumpsca.re"
-                          body="Every address includes free web hosting for your subdomain.\n\nUse our straightforward interface to upload your HTML, CSS, and media files. \n\nBe creative, your website could be anything, from a personal profile or portfolio to a blog or even just a picture of your cat. You have the flexibility to bring your desired website to life and make it yours."
+                          body="Every address includes free web hosting for your subdomain.\n\nUse our straightforward interface to upload your HTML, CSS, and media files. \n\nBe creative, your website could be anything, from a personal profile or portfolio to a blog or even just a picture of your cat."
                           color="blue"
                           width="28rem"
-                          height="22rem"
+                          height="20rem"
                           bg-text="</>"
                           bg-text-bottom="-3.75rem"
                           bg-text-right="1rem"/>
@@ -79,19 +80,19 @@ function Homepage() {
 
             <div style={{textAlign: "center", marginBottom: "1rem"}}>
                 <div className="card" style={{backgroundColor: "var(--blue)",
-                    width: "59.75rem", maxWidth: "max(calc(100% - 2.8rem))", height: "10rem", textAlign: "center"}}>
+                    width: "59.75rem", maxWidth: "max(calc(100% - 2.8rem))", height: "max-content", textAlign: "center"}}>
                     <div className="card-header" style={{fontSize: "2rem"}}>
                         Find out if yours is up for grabs
                     </div>
                     <div className="card-body">
                         <input type="text" className="address-input" onInput={(e) => {
-                            let val = e.target.value?.replace(/[./]/gm, "")
+                            let val = e.target.value?.replace(/[./]/gm, "").toLowerCase()
                             if (val !== e.target.value) e.target.value = val;
                             clearTimeout(checkTimeout);
                             if (!val || val?.trim()?.length === 0) return setAvailability(undefined);
                             setAvailability({checking: true})
                             setCheckTimeout(setTimeout(async () => {
-                                let res = await api.getAddress(val);
+                                let res = await api.getAddressPublic(val);
                                 let available = res.response.available;
                                 let reserved = !!res.response?.reserved;
                                 let invalid = !!res.response?.invalid;
@@ -120,6 +121,7 @@ function Homepage() {
                                     available,
                                     reserved,
                                     name,
+                                    val,
                                     statusCode,
                                     availabilityText,
                                     punycode: name !== val
@@ -131,10 +133,13 @@ function Homepage() {
                     {availability &&
                     (availability.checking
                         ? <span style={{fontSize: "1.2rem"}}>Checking...</span>
-                        : <span style={{fontSize: "1.2rem"}}>
-                            <Icon className="text-aligned-icon" icon={availability.available ? "fluent:presence-available-24-regular" : "fluent:presence-blocked-24-regular"} />
-                            {availability.availabilityText}
-                        </span>)
+                        : <><span style={{fontSize: "1.2rem", color: availability.available ? "var(--homepage-available)" : "var(--homepage-not-available)"}}>
+                            <Icon className="text-aligned-icon" style={{marginRight: "0.2rem"}} icon={availability.available ? "fluent:presence-available-24-regular" : "fluent:presence-blocked-24-regular"} />
+                            {availability.availabilityText} {availability.punycode && <Link className="card-link" to="https://help.jumpsca.re/punycode">Learn why</Link>}
+
+                        </span>{availability.available && <>
+                        <br /><Link to={`/register?address=${availability.val}`}><button className="button register-button">Register</button></Link>
+                        </>}</>)
                     }
                     <div className="card-bg-text" style={{color: `var(--blue-d)`, top: 0, left: 0, fontSize: "12rem"}}>
                         <Icon icon="foundation:magnifying-glass" color="#fff7ae" />

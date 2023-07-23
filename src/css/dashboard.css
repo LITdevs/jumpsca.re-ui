@@ -1,0 +1,110 @@
+.address-card-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 2rem;
+    justify-content: center;
+}
+
+.address-card {
+    display: block;
+    padding: 2rem;
+    margin: 1rem;
+    background-color: var(--dashboard-card-color);
+    border-radius: 1px;
+    width: min(20rem, calc(100vw - 10rem));
+}
+
+.address-card-header {
+    display: block;
+    font-size: 1.75rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    margin-bottom: 2.5rem;
+}
+
+.address-card-clickable:hover {
+    /*animation: popout 0.2s ease forwards;*/
+    transform:scale(1.1);
+    transition: transform 0.2s
+}
+
+.address-card-clickable {
+    /*animation: popgone 0.1s ease forwards;*/
+    cursor: pointer;
+    transform:scale(1);
+    transition: transform 0.1s
+}
+
+@keyframes popout {
+    from{transform:scale(1)}
+    to{transform:scale(1.2)}
+}
+
+@keyframes popgone {
+    from{transform:scale(1.2)}
+    to{transform:scale(1)}
+
+}
+
+.address-card-account {
+    background-color: var(--dashboard-card-color-alt);
+}
+
+.dashboard-texts {
+    padding: 0 0 0 2rem;
+    color: var(--dashboard-text)
+}
+
+.dashboard-header {
+    font-weight: 600;
+    font-size: 2rem
+}
+
+.dashboard-body {
+    font-size: 1.25rem;
+}
+
+.dashboard-account-card {
+    background-color: var(--account-dashboard-color);
+    margin: 2rem;
+    padding: 0.1rem 1rem 1rem 1.5rem;
+    font-size: 1.1rem;
+    line-height: 1rem;
+}
+
+.dashboard-address-card {
+    background-color: var(--address-dashboard-color);
+    margin: 2rem;
+    padding: 0.1rem 1rem 1rem 1.5rem;
+    font-size: 1.1rem;
+    line-height: 1rem;
+}
+
+.input {
+    font-family: "Belanosima", sans-serif;
+    font-size: 1.1rem;
+    border-radius: 4px;
+    border-width: 0;
+    padding: 0.5rem;
+    width: 14rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+
+.input-problem {
+    border-color: var(--coral-d);
+    border-width: 2px;
+}
+
+hr {
+    outline: none;
+    border-top-color: var(--dark-d);
+    border-right-color: var(--dark-d);
+    border-left-color: var(--dark-d);
+    border-bottom-color: var(--dark-d);
+    border-radius: 2px;
+    border-width: 1px;
+}

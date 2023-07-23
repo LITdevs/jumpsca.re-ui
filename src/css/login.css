@@ -1,0 +1,14 @@
+.login-card {
+    position: relative;
+    padding: 1rem 1rem 0;
+
+}
+
+.login-button {
+    margin-bottom: 0.5rem;
+}
+
+.email-input-problem {
+    border-color: var(--coral-d);
+    border-width: 2px;
+}

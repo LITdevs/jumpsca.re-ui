@@ -1,0 +1,54 @@
+.checkout-card-container {
+
+}
+
+.checkout-card {
+    background-color: var(--checkout-background);
+    color: var(--checkout-text);
+    display: flex;
+    flex-direction: column;
+    width: min(32rem, 90vw);
+    text-align: center;
+    margin: 5rem auto 0;
+    padding-bottom: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-radius: 0.2rem;
+    font-size: 1.2rem;
+}
+
+.checkout-icon {
+    font-size: 6.5rem;
+    padding: 1rem;
+    margin: 0 auto;
+}
+
+.checkout-icon-cancel {
+    color: var(--checkout-cancel-color)
+}
+
+.checkout-icon-success {
+    color: var(--checkout-success-color)
+}
+
+.card-link {
+    color: var(--card-link-color);
+}
+.card-link:visited {
+    color: var(--card-link-color-visited);
+}
+.card-link:hover {
+    color: var(--card-link-color-hover);
+}
+
+.email-input {
+    font-family: "Belanosima", sans-serif;
+    font-size: 1.1rem;
+    border-radius: 4px;
+    border-width: 0;
+    padding: 0.5rem 0.25rem;
+    text-align: center;
+    width: 50%;
+    align-self: center;
+    margin: 0.5rem
+}

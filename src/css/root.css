@@ -28,6 +28,7 @@
     Contains <Outlet>
      */
     flex-grow: 1;
+    position: relative;
     overflow-y: auto;
 
 }
@@ -47,4 +48,81 @@
     font-size: 1.2rem;
     font-weight: 600;
 
+}
+
+/**
+Super crappy buttons :/
+ */
+
+.button {
+    background-color: var(--pink-d);
+    outline: none;
+    border-radius: 0.2rem;
+    border-width: 0;
+    border-bottom-width: 3px;
+    border-right-width: 3px;
+    filter: drop-shadow(0.2rem 0.15rem 0.05rem var(--dark-d));
+    padding: 0.5rem;
+    font-family: "Belanosima", sans-serif;
+    font-size: 1.1rem;
+    border-color: var(--pink-d);
+}
+
+.button-green {
+    background-color: var(--green);
+    border-color: var(--green);
+}
+
+.button:disabled {
+    cursor: not-allowed;
+}
+
+.button:hover {
+    background-color: var(--pink);
+    border-color: var(--pink);
+}
+
+.button-green:hover {
+    background-color: var(--green);
+    filter: brightness(110%) drop-shadow(0.2rem 0.15rem 0.05rem var(--dark-d));
+    border-color: var(--green);
+}
+
+.button:hover:disabled {
+    background-color: var(--pink-d);
+    border-color: var(--pink-d);
+}
+
+.button-green:hover:disabled {
+    background-color: var(--green);
+    border-color: var(--green);
+}
+
+.button:active {
+    filter: drop-shadow(0.1rem 0.1rem 0.05rem var(--dark-d));
+}
+
+
+.button:active:disabled {
+    filter: drop-shadow(0.2rem 0.15rem 0.05rem var(--dark-d));
+}
+
+.no-style-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.no-style-link:visited {
+    text-decoration: none;
+    color: inherit;
+}
+
+.no-style-link:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+a {
+    color: unset;
+    text-decoration: unset;
 }
