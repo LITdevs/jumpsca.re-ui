@@ -28,6 +28,7 @@
     Contains <Outlet>
      */
     flex-grow: 1;
+    position: relative;
     overflow-y: auto;
 
 }
@@ -67,6 +68,11 @@ Super crappy buttons :/
     border-color: var(--pink-d);
 }
 
+.button-green {
+    background-color: var(--green);
+    border-color: var(--green);
+}
+
 .button:disabled {
     cursor: not-allowed;
 }
@@ -76,10 +82,20 @@ Super crappy buttons :/
     border-color: var(--pink);
 }
 
+.button-green:hover {
+    background-color: var(--green);
+    filter: brightness(110%) drop-shadow(0.2rem 0.15rem 0.05rem var(--dark-d));
+    border-color: var(--green);
+}
+
 .button:hover:disabled {
     background-color: var(--pink-d);
     border-color: var(--pink-d);
+}
 
+.button-green:hover:disabled {
+    background-color: var(--green);
+    border-color: var(--green);
 }
 
 .button:active {
@@ -89,4 +105,24 @@ Super crappy buttons :/
 
 .button:active:disabled {
     filter: drop-shadow(0.2rem 0.15rem 0.05rem var(--dark-d));
+}
+
+.no-style-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.no-style-link:visited {
+    text-decoration: none;
+    color: inherit;
+}
+
+.no-style-link:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+a {
+    color: unset;
+    text-decoration: unset;
 }

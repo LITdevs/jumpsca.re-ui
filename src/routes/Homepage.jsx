@@ -38,10 +38,10 @@ function Homepage() {
 
 
                     <Card title="Host your website on jumpsca.re"
-                          body="Every address includes free web hosting for your subdomain.\n\nUse our straightforward interface to upload your HTML, CSS, and media files. \n\nBe creative, your website could be anything, from a personal profile or portfolio to a blog or even just a picture of your cat. You have the flexibility to bring your desired website to life and make it yours."
+                          body="Every address includes free web hosting for your subdomain.\n\nUse our straightforward interface to upload your HTML, CSS, and media files. \n\nBe creative, your website could be anything, from a personal profile or portfolio to a blog or even just a picture of your cat."
                           color="blue"
                           width="28rem"
-                          height="22rem"
+                          height="20rem"
                           bg-text="</>"
                           bg-text-bottom="-3.75rem"
                           bg-text-right="1rem"/>
@@ -86,13 +86,13 @@ function Homepage() {
                     </div>
                     <div className="card-body">
                         <input type="text" className="address-input" onInput={(e) => {
-                            let val = e.target.value?.replace(/[./]/gm, "")
+                            let val = e.target.value?.replace(/[./]/gm, "").toLowerCase()
                             if (val !== e.target.value) e.target.value = val;
                             clearTimeout(checkTimeout);
                             if (!val || val?.trim()?.length === 0) return setAvailability(undefined);
                             setAvailability({checking: true})
                             setCheckTimeout(setTimeout(async () => {
-                                let res = await api.getAddress(val);
+                                let res = await api.getAddressPublic(val);
                                 let available = res.response.available;
                                 let reserved = !!res.response?.reserved;
                                 let invalid = !!res.response?.invalid;

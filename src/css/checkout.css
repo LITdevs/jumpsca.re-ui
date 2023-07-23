@@ -42,6 +42,8 @@
 }
 
 .email-input {
+    font-family: "Belanosima", sans-serif;
+    font-size: 1.1rem;
     border-radius: 4px;
     border-width: 0;
     padding: 0.5rem 0.25rem;

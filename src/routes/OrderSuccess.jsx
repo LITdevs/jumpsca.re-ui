@@ -53,7 +53,7 @@ export default function OrderSuccess (props) {
 					<span style={{textAlign: "right", paddingRight: "10%"}}>Total : {(session.total / 100).toFixed(2)} €</span>
 
 					<br/><br/>
-					<Link className="card-link" to="/">Back to the homepage</Link>
+					<Link className="card-link" to="/dashboard?new=true">Go to your dashboard</Link>
 				</>)
 		})();
 		

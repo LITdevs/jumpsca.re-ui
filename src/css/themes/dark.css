@@ -26,4 +26,9 @@
     --checkout-text: var(--dark-d);
     --checkout-cancel-color: var(--coral-d);
     --checkout-success-color: var(--green);
+    --dashboard-card-color: var(--coral);
+    --dashboard-card-color-alt: var(--blue);
+    --dashboard-text: var(--pink);
+    --account-dashboard-color: var(--yellow);
+    --address-dashboard-color: var(--pink);
 }

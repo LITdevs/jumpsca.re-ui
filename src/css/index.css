@@ -73,6 +73,7 @@ code {
 
 ::-webkit-scrollbar {
   width: 0.33rem;               /* width of the entire scrollbar */
+  height: 0.33rem;
 }
 
 ::-webkit-scrollbar-track {
