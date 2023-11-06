@@ -60,6 +60,7 @@ export default function Root() {
 						// 800 is a totally arbitrary number, but it seems pretty ok
 						// hello this is me from a couple hours later, it is no longer arbitrary
 						// it is now 862. that is all.
+						// hi this is me 4 months later, what?? what the heck is this number??? what is it based on??
 						(windowSize.width > magicNumber|| navOpen) && <Navbar />
 					}
 				</div>
