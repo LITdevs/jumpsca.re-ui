@@ -7,11 +7,11 @@ switch (process.env.REACT_APP_JR_ENV) {
 		break;
 	case "phoenix":
 		apiUrl = "https://api.phoenix.jumpsca.re"
-		wcUrl = "http://phoenix.wanderers.cloud"
+		wcUrl = "https://phoenix.wanderers.cloud"
 		break;
 	default:
 		apiUrl = "https://api.jumpsca.re"
-		wcUrl = "http://wanderers.cloud"
+		wcUrl = "https://wanderers.cloud"
 }
 
 class API {
@@ -20,8 +20,11 @@ class API {
 	static baseUrl = apiUrl;
 	static wcUrl = wcUrl;
 	static defaultVersion = "v1";
+	static wcDefaultVersion = "v1";
 	accessToken;
+	wcAccessToken;
 	refreshToken;
+	wcRefreshToken;
 	logoutMethod;
 
 
@@ -89,15 +92,20 @@ class API {
 	 * @param version
 	 * @returns {Promise<{request: {status_code: number, success: boolean, cat: string}, response: any}>}
 	 */
-	async call(service, path, method = "GET", body = null, headers = {}, version = API.defaultVersion) {
+	async call(service, path, method = "GET", body = null, headers = {}, version = null) {
 		if (path.startsWith("/")) path = path.substring(1);
 		let baseUrl;
+		let token;
 		switch (service) {
 			case "WC":
 				baseUrl = API.wcUrl;
+				token = this.wcAccessToken && `Bearer ${this.wcAccessToken}`
+				version = version || API.wcDefaultVersion
 				break;
 			default:
 				baseUrl = API.baseUrl;
+				token = this.accessToken && `Bearer ${this.accessToken}`
+				version = version || API.defaultVersion
 				break;
 		}
 		let url = `${baseUrl}/${version}/${path}`;
@@ -106,7 +114,7 @@ class API {
 			headers: {
 				...headers,
 				"Content-Type": "application/json",
-				"Authorization": this.accessToken && `Bearer ${this.accessToken}`
+				"Authorization": token
 			},
 			body: body && JSON.stringify(body)
 		}
@@ -127,6 +135,14 @@ class API {
 		console.debug("API: AC Token updated")
 		this.accessToken = token;
 		(async () => {
+			if (token) {
+				let wcRes = await this.call("JR", "/user/wc", "POST");
+				this.wcAccessToken = wcRes.response.accessToken;
+				this.wcRefreshToken = wcRes.response.refreshToken;
+			} else {
+				this.wcAccessToken = null;
+				this.wcRefreshToken = null;
+			}
 			let userInfo = await this.getUserInfo()
 			setLoggedInState(userInfo.request.success)
 		})()
@@ -137,6 +153,8 @@ class API {
 		this.logoutMethod = () => {
 			this.accessToken = null;
 			this.refreshToken = null;
+			this.wcAccessToken = null;
+			this.wcRefreshToken = null;
 			logoutMethod();
 		}
 		this.setAccessTokenState = setAccessTokenState;
@@ -160,8 +178,13 @@ class API {
 					accessToken: this.accessToken,
 					refreshToken: this.refreshToken
 				})
-				if (res.request.success) {
+				let wcRes = await this.call("JR", "/user/login/refresh", "POST", {
+					accessToken: this.wcAccessToken,
+					refreshToken: this.wcRefreshToken
+				})
+				if (res.request.success && wcRes.request.success) {
 					this.accessToken = res.response.accessToken;
+					this.wcAccessToken = res.response.wcAccessToken;
 					this.setAccessTokenState(res.response.accessToken);
 				} else {
 					// noinspection ExceptionCaughtLocallyJS (hello?? thats the point)
@@ -236,6 +259,8 @@ class API {
 			invalidateSessions: signOutOthers
 		})
 	}
+
+
 }
 
 let api = new API();

@@ -41,8 +41,8 @@ export default function Root() {
 					windowSize.width <= magicNumber && <Icon style={{
 						color: "var(--nav-menu-button)",
 						position: "absolute",
-						top: "0.5rem",
-						right: "0.5rem",
+						top: "0.75rem",
+						left: "0.5rem",
 						fontSize: "2rem",
 						zIndex: "1000"
 					}} icon="ic:baseline-menu" onClick={() => {
@@ -53,6 +53,7 @@ export default function Root() {
 					{ !navOpen && <Outlet/> }
 				</div>
 				<div className="root-right" onClick={(e) => {
+					// Hello?? what is this -Me from 7 months later
 					if (e.target.nodeName === "A" && navOpen) setNavOpen(false);
 				}}>
 					{
@@ -61,6 +62,7 @@ export default function Root() {
 						// hello this is me from a couple hours later, it is no longer arbitrary
 						// it is now 862. that is all.
 						// hi this is me 4 months later, what?? what the heck is this number??? what is it based on??
+						// hi this is me 2 months later.. what???????? lol??
 						(windowSize.width > magicNumber|| navOpen) && <Navbar />
 					}
 				</div>
