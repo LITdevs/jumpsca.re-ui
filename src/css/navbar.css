@@ -15,6 +15,10 @@
     text-align: center;
 }
 
+.navbar-header-wc {
+    font-size: 2.1rem;
+}
+
 .navbar-item-link-text {
     margin: 0 0.5rem;
 }

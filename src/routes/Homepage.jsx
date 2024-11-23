@@ -3,13 +3,21 @@ import "../css/home.css";
 import "../css/card.css";
 import Masonry, {ResponsiveMasonry} from "react-responsive-masonry";
 import {Icon} from "@iconify-icon/react";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import api from "../util/API";
 import {Link} from "react-router-dom";
 
 function Homepage() {
     const [availability, setAvailability] = useState(undefined);
     const [checkTimeout, setCheckTimeout] = useState(undefined);
+    const [ip, setIp] = useState("65.109.38.61");
+
+    useEffect(() => {
+        (async () => {
+            let ip = await api.getIp();
+            setIp(ip);
+        })();
+    })
 
     return (
         <div className="card-container">
@@ -19,7 +27,7 @@ function Homepage() {
                 <Masonry>
                     <Card title="Get your own @jumpsca.re email address"
                           body="Have you ever wanted to email@jumpsca.re someone?\nNow you can! Every address comes with an email address under the jumpsca.re domain."
-                          color="yellow"
+                          color="coral"
                           height="12rem"
                           width="28rem"
                           bg-text="@"
@@ -31,7 +39,7 @@ function Homepage() {
                           color="pink"
                           width="28rem"
                           height="14rem"
-                          bg-text="104.24"
+                          bg-text={ip}
                           bg-text-bottom="-1.75rem"
                           bg-text-right="0rem"
                           bg-text-size="10rem"/>
@@ -48,7 +56,7 @@ function Homepage() {
 
                     <Card title="You kept reading! That's good right?"
                           body="Or maybe this is the first information card you read?\nIn any case, for just 2 €/year you can get access to these services, and your very own address under the jumpsca.re domain.\n🦀2 €🦀"
-                          color="coral"
+                          color="blue"
                           width="28rem"
                           bg-text="2€"
                           bg-text-bottom="-3.5rem"
@@ -65,9 +73,29 @@ function Homepage() {
                           bg-text-right="1rem"
                           bg-text-size="18rem"/>
 
+                    <Card title="social.jumpsca.red"
+                          body="A misskey instance for jumpsca.re customers!"
+                          color="coral"
+                          bg-text="Mi"
+                          height="7rem"
+                          width="28rem"
+                          bg-text-bottom="-2rem"
+                          bg-text-right="1rem"
+                          bg-text-size="9rem"/>
+
+                    <Card title="wanderers.cloud"
+                          body="Customers get access to a file transfer site for easily transferring files from one device to another, or hosting temporary files like screenshots"
+                          color="yellow"
+                          bg-text="WC"
+                          height="8rem"
+                          width="28rem"
+                          bg-text-bottom="-2rem"
+                          bg-text-right="1rem"
+                          bg-text-size="9rem"/>
+                    
                     <Card title="Jumpsca.red"
                           body="Something exclusive for jumpsca.re customers in the future, currently unknown!"
-                          color="coral"
+                          color="pink"
                           bg-text=".red"
                           height="7rem"
                           width="28rem"

@@ -12,7 +12,7 @@
     "react-scripts": "5.0.1"
   },
   "scripts": {
-    "start": "set \"REACT_APP_JR_ENV=local\" && react-scripts start",
+    "start": "set \"REACT_APP_JR_ENV=phoenix\" && react-scripts start",
     "build": "react-scripts build"
   },
   "eslintConfig": {

@@ -17,6 +17,7 @@ import api from "./util/API";
 import Dashboard from "./routes/Dashboard";
 import DashboardAccount from "./routes/DashboardAccount";
 import DashboardAddress from "./routes/DashboardAddress";
+import Wanderers from "./routes/wc/Wanderers";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -125,6 +126,16 @@ const router = createBrowserRouter([
                     {
                         path: "/dashboard/address/:address",
                         element: <DashboardAddress />
+                    }
+                ]
+            },
+            {
+                path: "/wc",
+                element: <AuthenticationNeeded />,
+                children: [
+                    {
+                        path: "/wc",
+                        element: <Wanderers />
                     }
                 ]
             },
