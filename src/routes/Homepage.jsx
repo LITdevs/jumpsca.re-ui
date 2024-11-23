@@ -3,13 +3,21 @@ import "../css/home.css";
 import "../css/card.css";
 import Masonry, {ResponsiveMasonry} from "react-responsive-masonry";
 import {Icon} from "@iconify-icon/react";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import api from "../util/API";
 import {Link} from "react-router-dom";
 
 function Homepage() {
     const [availability, setAvailability] = useState(undefined);
     const [checkTimeout, setCheckTimeout] = useState(undefined);
+    const [ip, setIp] = useState("65.109.38.61");
+
+    useEffect(() => {
+        (async () => {
+            let ip = await api.getIp();
+            setIp(ip);
+        })();
+    })
 
     return (
         <div className="card-container">
@@ -31,7 +39,7 @@ function Homepage() {
                           color="pink"
                           width="28rem"
                           height="14rem"
-                          bg-text="104.24"
+                          bg-text={ip}
                           bg-text-bottom="-1.75rem"
                           bg-text-right="0rem"
                           bg-text-size="10rem"/>

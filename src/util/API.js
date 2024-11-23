@@ -239,6 +239,10 @@ class API {
 		});
 	}
 
+	async getIp() {
+		return (await this.call("JR", "/ip", "GET")).ip;
+	}
+
 	async attemptLoginEmail(email, code) {
 		return await this.call("JR", "/user/login/email", "POST", {
 			email,
